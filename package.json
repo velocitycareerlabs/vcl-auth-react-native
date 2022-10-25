@@ -1,6 +1,6 @@
 {
   "name": "@velocitycareerlabs/vcl-auth-react-native",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Velocity Career Labs Authentication React Native SDK",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

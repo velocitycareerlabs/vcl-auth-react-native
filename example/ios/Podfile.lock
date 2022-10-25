@@ -245,10 +245,10 @@ PODS:
     - React-Core (= 0.63.4)
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
-  - vcl-auth-react-native (1.0.1):
+  - vcl-auth-react-native (1.0.3):
     - React-Core
-    - VCLAuth (= 1.0.1)
-  - VCLAuth (1.0.1)
+    - VCLAuth (= 1.0.3)
+  - VCLAuth (1.0.3)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -371,8 +371,8 @@ SPEC CHECKSUMS:
   React-RCTText: 5c51df3f08cb9dedc6e790161195d12bac06101c
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
-  vcl-auth-react-native: 014fc99b55784a5a84591f2b980860c5e0be1831
-  VCLAuth: 78dc812bf2e40fc02dc2d47749adb0cbba069926
+  vcl-auth-react-native: 82b020e9d20e7042fa41f321d10de46a9bc53450
+  VCLAuth: 11f6c48b5f2558911a99ba64eccc4d7c60bc585b
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
 PODFILE CHECKSUM: e898d42420c4ab61044bca26b117b4687fdab9c0
