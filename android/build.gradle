@@ -9,7 +9,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:7.2.2'
+    classpath 'com.android.tools.build:gradle:7.4.0'
     // noinspection DifferentKotlinGradleVersion
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
   }
@@ -130,5 +130,5 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
   implementation "androidx.biometric:biometric:1.1.0"
-  implementation "io.velocitycareerlabs:vclauth:1.0.3"
+  implementation "io.velocitycareerlabs:vclauth:1.1.0"
 }
