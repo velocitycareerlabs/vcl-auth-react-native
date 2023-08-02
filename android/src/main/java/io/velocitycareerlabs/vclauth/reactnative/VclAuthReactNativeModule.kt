@@ -4,7 +4,7 @@
  * Copyright 2022 Velocity Career Labs inc.
  * SPDX-License-Identifier: Apache-2.0
  */
- 
+
 package io.velocitycareerlabs.vclauth.reactnative
 
 import androidx.fragment.app.FragmentActivity
@@ -59,13 +59,29 @@ class VclAuthReactNativeModule(reactContext: ReactApplicationContext) : ReactCon
   }
 
   @ReactMethod
+  fun cancelAuthentication(promise: Promise) {
+    try {
+      vclAuth.cancelAuthentication(
+        successHandler = {
+          promise.resolve("Authentication canceled")
+        },
+        errorHandler = {
+          promise.reject(it)
+        }
+      )
+    } catch(ex: Exception) {
+      promise.reject(VCLError(ex.message))
+    }
+  }
+
+  @ReactMethod
   fun openSecuritySettings(promise: Promise) {
     (currentActivity as? FragmentActivity)?.let { currentActivity ->
       try {
         vclAuth.openSecuritySettings(
           currentActivity,
           successHandler = {
-            promise.resolve(it)
+            promise.resolve("Security settings open")
           },
           errorHandler = {
             promise.reject(it)

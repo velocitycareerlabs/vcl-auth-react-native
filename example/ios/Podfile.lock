@@ -274,10 +274,10 @@ PODS:
     - React-jsi (= 0.67.5)
     - React-logger (= 0.67.5)
     - React-perflogger (= 0.67.5)
-  - vcl-auth-react-native (1.1.0):
+  - vcl-auth-react-native (1.3.0):
     - React-Core
-    - VCLAuth (= 1.1.0)
-  - VCLAuth (1.1.0)
+    - VCLAuth (= 1.3.0)
+  - VCLAuth (1.3.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -416,10 +416,10 @@ SPEC CHECKSUMS:
   React-RCTVibration: c3b8a3245267a3849b0c7cb91a37606bf5f3aa65
   React-runtimeexecutor: 434efc9e5b6d0f14f49867f130b39376c971c1aa
   ReactCommon: a30c2448e5a88bae6fcb0e3da124c14ae493dac1
-  vcl-auth-react-native: 83f87abf7d22124199508ae2b87c01821526855a
-  VCLAuth: 02587be8940b943ee559bb3da8f4e8ba567d6649
+  vcl-auth-react-native: 042c4b6d451dba88b28f5d25d29c8a975f778c87
+  VCLAuth: 350ab0aa4998865bfab5c3ee0a2df36c3cd87f56
   Yoga: 099a946cbf84c9b32ffdc4278d72db26710ecf92
 
 PODFILE CHECKSUM: e898d42420c4ab61044bca26b117b4687fdab9c0
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
