@@ -27,6 +27,7 @@ class VclAuthReactNative: NSObject {
             }
         )
     }
+    
     @objc(authenticate:withResolver:withRejecter:)
     func authenticate(
         authConfigDictionary: [String: Any],
@@ -43,13 +44,27 @@ class VclAuthReactNative: NSObject {
         )
     }
     
+    @objc(cancelAuthentication:withRejecter:)
+    func cancelAuthentication(
+        resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock
+    ) {
+        vclAuth.cancelAuthentication (
+            successHandler: {
+                resolve("Authentication canceled")
+            },
+            errorHandler: {
+                reject(nil, $0.description, $0)
+            }
+        )
+    }
+    
     @objc(openSecuritySettings:withRejecter:)
     func openSecuritySettings(
         resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock
     ) {
         vclAuth.openSecuritySettings (
             successHandler: {
-                resolve($0)
+                resolve("Security settings open")
             },
             errorHandler: {
                 reject(nil, $0.description, $0)
