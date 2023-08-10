@@ -46,8 +46,8 @@ export default function App() {
 
   const openSecuritySettings = () => {
     VclAuthReactNative.openSecuritySettings().then(
-      () => {
-        console.log('VCL Security settings is open');
+      (isOpen: boolean) => {
+        console.log('VCL Security settings is open:', isOpen);
       },
       (err: VCLError) => {
         console.log('VCL Security settings open error:', err);
