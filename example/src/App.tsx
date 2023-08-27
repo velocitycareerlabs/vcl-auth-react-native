@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { StyleSheet, View, Button, Alert } from 'react-native';
 import VclAuthReactNative, {
-  VCLError,
+  type VCLError,
 } from '@velocitycareerlabs/vcl-auth-react-native';
 
 export default function App() {

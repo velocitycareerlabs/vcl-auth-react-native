@@ -4,7 +4,7 @@
  * Copyright 2022 Velocity Career Labs inc.
  * SPDX-License-Identifier: Apache-2.0
  */
- 
+
 package io.velocitycareerlabs.vclauth.reactnative
 
 import com.facebook.react.ReactPackage
@@ -14,11 +14,11 @@ import com.facebook.react.uimanager.ViewManager
 import io.velocitycareerlabs.vclauth.reactnative.VclAuthReactNativeModule
 
 class VclAuthReactNativePackage : ReactPackage {
-    override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
-        return listOf(VclAuthReactNativeModule(reactContext))
-    }
+  override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
+    return listOf(VclAuthReactNativeModule(reactContext))
+  }
 
-    override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
-        return emptyList()
-    }
+  override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
+    return emptyList()
+  }
 }
