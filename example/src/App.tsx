@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { StyleSheet, View, Button, Alert } from 'react-native';
 import VclAuthReactNative, {
-  VCLError,
+  type VCLError,
 } from '@velocitycareerlabs/vcl-auth-react-native';
 
 export default function App() {
@@ -47,7 +47,7 @@ export default function App() {
   const openSecuritySettings = () => {
     VclAuthReactNative.openSecuritySettings().then(
       (isOpen: boolean) => {
-        console.log('VCL Security settings open:', isOpen);
+        console.log('VCL Security settings is open:', isOpen);
       },
       (err: VCLError) => {
         console.log('VCL Security settings open error:', err);
