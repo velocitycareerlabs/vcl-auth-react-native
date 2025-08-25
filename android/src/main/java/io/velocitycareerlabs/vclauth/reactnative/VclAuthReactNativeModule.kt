@@ -4,19 +4,28 @@
  * Copyright 2022 Velocity Career Labs inc.
  * SPDX-License-Identifier: Apache-2.0
  */
- 
+
 package io.velocitycareerlabs.vclauth.reactnative
 
 import androidx.fragment.app.FragmentActivity
-import com.facebook.react.bridge.*
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactContextBaseJavaModule
+import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReadableMap
 import io.velocitycareerlabs.vclauth.api.VCLError
 import io.velocitycareerlabs.vclauth.api.VclAuthProvider
 import io.velocitycareerlabs.vclauth.reactnative.utlis.Converter.mapToAuthConfig
 
-class VclAuthReactNativeModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class VclAuthReactNativeModule(reactContext: ReactApplicationContext) :
+  ReactContextBaseJavaModule(reactContext) {
 
   override fun getName(): String {
-    return "VclAuthReactNative"
+    return NAME
+  }
+
+  companion object {
+    const val NAME = "VclAuthReactNative"
   }
 
   private val vclAuth = VclAuthProvider.instance()
@@ -76,4 +85,3 @@ class VclAuthReactNativeModule(reactContext: ReactApplicationContext) : ReactCon
     }
   }
 }
-

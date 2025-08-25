@@ -1,3 +1,9 @@
+//
+//  VCLAuth.swift
+//  CocoaAsyncSocket
+//
+//  Created by Michael Avoyan on 22/05/2022.
+//
 //  Copyright 2022 Velocity Career Labs inc.
 //  SPDX-License-Identifier: Apache-2.0
 
@@ -14,5 +20,10 @@ RCT_EXTERN_METHOD(authenticate:(NSDictionary*)authConfigDictionary
 
 RCT_EXTERN_METHOD(openSecuritySettings:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
+
++ (BOOL)requiresMainQueueSetup
+{
+  return NO;
+}
 
 @end

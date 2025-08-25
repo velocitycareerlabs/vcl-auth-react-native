@@ -5,14 +5,29 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { NativeModules } from 'react-native';
+import { NativeModules, Platform } from 'react-native';
 import type { Dictionary } from './api/Dictionary';
 import type { VCLAuthApi } from './api/VCLAuthApi';
 import type { VCLAuthConfig } from './api/entities/VCLAuthConfig';
 import type { VCLError } from './api/entities/VCLError';
 
-const { VclAuthReactNative } = NativeModules;
+const LINKING_ERROR =
+  `The package '@velocitycareerlabs/vcl-auth-react-native' doesn't seem to be linked. Make sure: \n\n` +
+  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
+  '- You rebuilt the app after installing the package\n' +
+  '- You are not using Expo Go\n';
+
+const VclAuthReactNative = NativeModules.VclAuthReactNative
+  ? NativeModules.VclAuthReactNative
+  : new Proxy(
+      {},
+      {
+        get() {
+          throw new Error(LINKING_ERROR);
+        },
+      }
+    );
 
 export default VclAuthReactNative as VCLAuthApi;
 
-export { Dictionary, VCLAuthApi, VCLAuthConfig, VCLError };
+export type { Dictionary, VCLAuthApi, VCLAuthConfig, VCLError };
