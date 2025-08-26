@@ -1,29 +1,18 @@
-//
-//  VCLAuth.swift
-//  CocoaAsyncSocket
-//
-//  Created by Michael Avoyan on 22/05/2022.
-//
-//  Copyright 2022 Velocity Career Labs inc.
-//  SPDX-License-Identifier: Apache-2.0
+#import "VclAuthReactNative.h"
 
-#import <React/RCTBridgeModule.h>
+@implementation VclAuthReactNative
+RCT_EXPORT_MODULE()
 
-@interface RCT_EXTERN_MODULE(VclAuthReactNative, NSObject)
+- (NSNumber *)multiply:(double)a b:(double)b {
+    NSNumber *result = @(a * b);
 
-RCT_EXTERN_METHOD(isAuthenticationAvailable:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject)
+    return result;
+}
 
-RCT_EXTERN_METHOD(authenticate:(NSDictionary*)authConfigDictionary
-                  withResolver:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject)
-
-RCT_EXTERN_METHOD(openSecuritySettings:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject)
-
-+ (BOOL)requiresMainQueueSetup
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
+    (const facebook::react::ObjCTurboModule::InitParams &)params
 {
-  return NO;
+    return std::make_shared<facebook::react::NativeVclAuthReactNativeSpecJSI>(params);
 }
 
 @end
