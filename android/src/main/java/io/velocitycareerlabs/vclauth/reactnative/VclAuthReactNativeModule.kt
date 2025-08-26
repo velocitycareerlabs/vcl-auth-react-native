@@ -8,80 +8,83 @@
 package io.velocitycareerlabs.vclauth.reactnative
 
 import androidx.fragment.app.FragmentActivity
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReadableMap
 import io.velocitycareerlabs.vclauth.api.VCLError
 import io.velocitycareerlabs.vclauth.api.VclAuthProvider
 import io.velocitycareerlabs.vclauth.reactnative.utlis.Converter.mapToAuthConfig
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.module.annotations.ReactModule
 
+@ReactModule(name = VclAuthReactNativeModule.NAME)
 class VclAuthReactNativeModule(reactContext: ReactApplicationContext) :
-  ReactContextBaseJavaModule(reactContext) {
+  NativeVclAuthReactNativeSpec(reactContext) {
 
   override fun getName(): String {
     return NAME
   }
 
-  companion object {
-    const val NAME = "VclAuthReactNative"
-  }
-
   private val vclAuth = VclAuthProvider.instance()
 
-  @ReactMethod
-  fun isAuthenticationAvailable(promise: Promise) {
-    currentActivity?.let { currentActivity ->
-      try {
-        vclAuth.isAuthenticationAvailable(
-          context = currentActivity,
-          successHandler = {
-            promise.resolve(it)
-          },
-          errorHandler = {
-            promise.reject(it)
-          })
-      } catch (ex: Exception) {
-        promise.reject(VCLError(ex.message))
-      }
+  override fun isAuthenticationAvailable(promise: Promise) {
+    val activity = reactApplicationContext.currentActivity
+    if (activity == null) {
+      promise.reject("NO_ACTIVITY", "No current activity available")
+      return
+    }
+    try {
+      vclAuth.isAuthenticationAvailable(
+        context = activity,
+        successHandler = { result -> promise.resolve(result) },
+        errorHandler = { err -> promise.reject("AUTH_ERROR", err.message, err) }
+      )
+    } catch (ex: Exception) {
+      promise.reject("EXCEPTION", ex.message, ex)
     }
   }
 
-  @ReactMethod
-  fun authenticate(authConfigMap: ReadableMap, promise: Promise) {
-    (currentActivity as? FragmentActivity)?.let { currentActivity ->
-      try {
-        vclAuth.authenticate(
-          activity = currentActivity,
-          authConfig = mapToAuthConfig(authConfigMap),
-          successHandler = {
-            promise.resolve(it)
-          },
-          errorHandler = {
-            promise.reject(it)
-          })
-      } catch (ex: Exception) {
-        promise.reject(VCLError(ex.message))
-      }
+  override fun authenticate(authConfigMap: ReadableMap, promise: Promise) {
+    val activity = reactApplicationContext.currentActivity as? FragmentActivity
+    if (activity == null) {
+      promise.reject("NO_FRAGMENT_ACTIVITY", "No current activity available as? FragmentActivity")
+      return
+    }
+    try {
+      vclAuth.authenticate(
+        activity = activity,
+        authConfig = mapToAuthConfig(authConfigMap),
+        successHandler = {
+          promise.resolve(it)
+        },
+        errorHandler = {
+          promise.reject(it)
+        })
+    } catch (ex: Exception) {
+      promise.reject(VCLError(ex.message))
     }
   }
 
-  @ReactMethod
-  fun openSecuritySettings(promise: Promise) {
-    (currentActivity as? FragmentActivity)?.let { currentActivity ->
-      try {
-        vclAuth.openSecuritySettings(
-          currentActivity,
-          successHandler = {
-            promise.resolve(it)
-          },
-          errorHandler = {
-            promise.reject(it)
-          })
-      } catch (ex: Exception) {
-        promise.reject(VCLError(ex.message))
-      }
+  override fun openSecuritySettings(promise: Promise) {
+    val activity = reactApplicationContext.currentActivity
+    if (activity == null) {
+      promise.reject("NO_ACTIVITY", "No current activity available")
+      return
     }
+    try {
+      vclAuth.openSecuritySettings(
+        activity,
+        successHandler = {
+          promise.resolve(it)
+        },
+        errorHandler = {
+          promise.reject(it)
+        })
+    } catch (ex: Exception) {
+      promise.reject(VCLError(ex.message))
+    }
+  }
+
+  companion object {
+    const val NAME = "VclAuthReactNative"
   }
 }

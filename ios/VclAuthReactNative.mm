@@ -1,29 +1,29 @@
-//
-//  VCLAuth.swift
-//  CocoaAsyncSocket
-//
-//  Created by Michael Avoyan on 22/05/2022.
-//
-//  Copyright 2022 Velocity Career Labs inc.
-//  SPDX-License-Identifier: Apache-2.0
+#import "VclAuthReactNative.h"
+#import "VclAuthReactNative-Swift.h"
 
-#import <React/RCTBridgeModule.h>
 
-@interface RCT_EXTERN_MODULE(VclAuthReactNative, NSObject)
+@implementation VclAuthReactNative
+RCT_EXPORT_MODULE()
 
-RCT_EXTERN_METHOD(isAuthenticationAvailable:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject)
-
-RCT_EXTERN_METHOD(authenticate:(NSDictionary*)authConfigDictionary
-                  withResolver:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject)
-
-RCT_EXTERN_METHOD(openSecuritySettings:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject)
-
-+ (BOOL)requiresMainQueueSetup
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
+    (const facebook::react::ObjCTurboModule::InitParams &)params
 {
-  return NO;
+    return std::make_shared<facebook::react::NativeVclAuthReactNativeSpecJSI>(params);
+}
+
+- (void)authenticate:(nonnull NSDictionary *)authConfig resolve:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject
+{
+  [VclAuthReactNativeImpl.shared authenticateWithAuthConfigDictionary:authConfig resolve:resolve reject:reject];
+}
+
+- (void)isAuthenticationAvailable:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject
+{
+  [VclAuthReactNativeImpl.shared isAuthenticationAvailableWithResolve:resolve reject:reject];
+}
+
+- (void)openSecuritySettings:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject
+{
+  [VclAuthReactNativeImpl.shared openSecuritySettingsWithResolve:resolve reject:reject];
 }
 
 @end
