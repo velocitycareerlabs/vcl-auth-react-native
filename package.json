@@ -16,7 +16,6 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "private": true,
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
