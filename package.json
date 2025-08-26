@@ -2,6 +2,21 @@
   "name": "@velocitycareerlabs/vcl-auth-react-native",
   "version": "1.6.0",
   "description": "Velocity Career Labs Authentication React Native SDK",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/velocitycareerlabs/vcl-auth-react-native.git"
+  },
+  "author": "Michael Avoyan <michael.avoyan.dev@gmail.com> (https://github.com/velocitycareerlabs)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/velocitycareerlabs/vcl-auth-react-native/issues"
+  },
+  "homepage": "https://github.com/velocitycareerlabs/vcl-auth-react-native#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "private": true,
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
@@ -47,20 +62,6 @@
     "ios",
     "android"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/velocitycareerlabs/vcl-auth-react-native.git"
-  },
-  "author": "Michael Avoyan <michael.avoyan.dev@gmail.com> (https://github.com/velocitycareerlabs)",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/velocitycareerlabs/vcl-auth-react-native/issues"
-  },
-  "homepage": "https://github.com/velocitycareerlabs/vcl-auth-react-native#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.6.0",
     "@eslint/compat": "^1.2.7",
