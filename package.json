@@ -32,6 +32,7 @@
     "!**/.*"
   ],
   "scripts": {
+    "check-licenses": "yarn licenses list --production --json | grep table | ./scripts/check-license.js",
     "example": "yarn workspace @velocitycareerlabs/vcl-auth-react-native-example",
     "test": "jest",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
