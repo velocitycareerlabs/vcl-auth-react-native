@@ -1,6 +1,6 @@
 {
   "name": "@velocitycareerlabs/vcl-auth-react-native",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Velocity Career Labs Authentication React Native SDK",
   "repository": {
     "type": "git",
@@ -157,6 +157,11 @@
     "jsSrcsDir": "src",
     "android": {
       "javaPackageName": "io.velocitycareerlabs.vclauth.reactnative"
+    },
+    "ios": {
+      "modulesProvider": {
+        "VclAuthReactNative": "VclAuthReactNative"
+      }
     }
   },
   "create-react-native-library": {
