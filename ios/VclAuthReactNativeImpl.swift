@@ -4,8 +4,11 @@
 //
 //  Created by Michael Avoyan on 26/08/2025.
 //
+//  Copyright 2022 Velocity Career Labs inc.
+//  SPDX-License-Identifier: Apache-2.0
 
 import Foundation
+import React
 import VCLAuth
 
 @objc public class VclAuthReactNativeImpl: NSObject {
