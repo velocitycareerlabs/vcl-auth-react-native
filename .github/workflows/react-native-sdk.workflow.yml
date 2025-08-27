@@ -41,7 +41,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-      # Commit Version Locally for Github npm
+      # Commit Version Locally for GitHub npm
       - name: Commit Version Locally for Github npm
         run: git add .npmrc && git commit -am "Prepare to release"
       # Install dependencies
