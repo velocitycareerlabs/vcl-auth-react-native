@@ -1,5 +1,9 @@
 #import "VclAuthReactNative.h"
+
+// Import the auto-generated Swift interface header
+#if __has_include("VclAuthReactNative-Swift.h")
 #import "VclAuthReactNative-Swift.h"
+#endif
 
 @implementation VclAuthReactNative
 
