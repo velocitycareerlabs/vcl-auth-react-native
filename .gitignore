@@ -64,3 +64,4 @@ example/android/app/src/main/assets/index.android.bundle
 example/android/java_pid80455.hprof
 /.yarn/cache
 /example/android/app/.cxx
+.yarn/install-state.gz
