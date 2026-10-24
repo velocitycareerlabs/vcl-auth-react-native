@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   
   s.swift_version = "5.0"
 
-  s.dependency "VCLAuth", "1.7.0"
+  s.dependency "VCLAuth", "1.7.1"
 
   install_modules_dependencies(s)
 end
