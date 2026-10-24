@@ -15,11 +15,16 @@ on:
           - dev
           - rc
           - prod
+
+permissions:
+  id-token: write
+  contents: read
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.sha }}
   cancel-in-progress: true
 env:
-  NODE_VERSION: '22'
+  NODE_VERSION: '24'
   RC_SUFFIX: 'rc'
   GLOBAL_ENV: ${{ github.event_name == 'push' && format('{0}', 'dev') || inputs.environment }}
 jobs:
@@ -30,26 +35,16 @@ jobs:
         uses: actions/checkout@v4
       # Setup Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
-      # Publish to npm
-      - name: Set NPM Packages Config
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-      # Git Set Identity
-      - name: Git Identity
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-      # Commit Version Locally for GitHub npm
-      - name: Commit Version Locally for Github npm
-        run: git add .npmrc && git commit -am "Prepare to release"
+          registry-url: 'https://registry.npmjs.org'
       # Install dependencies
       - name: Install dependencies
         run: corepack enable && yarn set version 3.6.1 && yarn
       # Build and Publish SDK
       - name: Build and Publish SDK
         if: ${{ env.GLOBAL_ENV == 'prod' || env.GLOBAL_ENV == 'rc' }}
-        run: npm publish --tag ${{ env.RELEASE_TAG }} --access public --userconfig ./.npmrc
+        run: npm publish --tag ${{ env.RELEASE_TAG }} --access public
         env:
           RELEASE_TAG: ${{ env.GLOBAL_ENV == 'prod' && format('{0}', 'latest' ) || env.RC_SUFFIX }}
