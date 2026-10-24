@@ -2341,8 +2341,8 @@ PODS:
     - React-utils (= 0.81.4)
     - SocketRocket
   - SocketRocket (0.7.1)
-  - VCLAuth (1.7.0)
-  - VclAuthReactNative (1.7.0):
+  - VCLAuth (1.7.1)
+  - VclAuthReactNative (1.7.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -2369,7 +2369,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - SocketRocket
-    - VCLAuth (= 1.7.0)
+    - VCLAuth (= 1.7.1)
     - Yoga
   - Yoga (0.0.0)
 
@@ -2678,10 +2678,10 @@ SPEC CHECKSUMS:
   ReactCodegen: 1d05923ad119796be9db37830d5e5dc76586aa00
   ReactCommon: 394c6b92765cf6d211c2c3f7f6bc601dffb316a6
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  VCLAuth: 998c0e422c5a321bd4c0d437eddc7274f65a8102
-  VclAuthReactNative: 13b1781ec13feca3514e65ebdfbe6d2dd7ce3dc3
+  VCLAuth: fd80e627be1a2f9a4bda95deda6e8ae4efb2676c
+  VclAuthReactNative: 436d45bc19884ec7479e13054a1cecc7666100aa
   Yoga: a3ed390a19db0459bd6839823a6ac6d9c6db198d
 
 PODFILE CHECKSUM: ba856f4f4c97cd990e8ba612b4ba31dbc51b51eb
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.17.0
